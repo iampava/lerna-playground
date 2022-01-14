@@ -1,0 +1,63 @@
+@import "../../styles/variables";
+
+.btn {
+  font-family: inherit;
+  font-size: inherit;
+  padding: 0.1em 0.75em;
+  border-radius: 5px;
+  border: 0;
+  color: color(white);
+  cursor: pointer;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  display: inline-block;
+
+  &.btn--blue {
+    background: color(blue);
+  }
+
+  &.btn--danger {
+    background: color(red);
+  }
+
+  &.btn--success {
+    background: color(green);
+  }
+}
+
+.btn--loading {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+
+  &:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0.4em;
+    width: 50%;
+    transform-origin: right;
+    border-top: 1.5px solid;
+    animation: btnLoading 1.5s ease-in-out infinite;
+  }
+}
+
+.btn:disabled {
+  cursor: initial;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+@keyframes btnLoading {
+  0% {
+    transform: translateX(-50%);
+  }
+
+  50% {
+    transform: translateX(150%);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
