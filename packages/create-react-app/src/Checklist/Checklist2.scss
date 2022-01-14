@@ -1,0 +1,9 @@
+@import "~ui-library/styles/variables.scss";
+
+.Checklist .ui-library-img {
+  width: 400px;
+  height: 200px;
+  background-size: cover;
+  border: 1em solid color(blue);
+  background-image: url("~ui-library/assets/mountain.jpg");
+}

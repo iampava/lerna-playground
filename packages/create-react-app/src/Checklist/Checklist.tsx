@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Markdown, Avatar } from 'ui-library';
 import './Checklist.css';
+import './Checklist2.scss';
 
 import mountainPhoto from 'ui-library/assets/mountain.jpg';
 
@@ -26,6 +27,7 @@ function Checklist() {
         <li>
           <h2> Asset import from CSS/SCSS code</h2>
           <p> Picture below is added via "background-image"</p>
+          <p> Border color is imported from "ui-library" </p>
           <div className="ui-library-img" />
         </li>
 
