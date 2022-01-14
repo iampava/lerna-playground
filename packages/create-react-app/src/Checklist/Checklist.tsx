@@ -1,10 +1,12 @@
-import React from 'react';
-import { Button } from 'ui-library';
+import React, { useState } from 'react';
+import { Button, Markdown } from 'ui-library';
 import './Checklist.css';
 
 import mountainPhoto from 'ui-library/assets/mountain.jpg';
 
 function Checklist() {
+  const [showMarkdown, setShowMarkdown] = useState(false);
+
   return (
     <section className="Checklist">
       <h1> Lerna Playground | create-react-app</h1>
@@ -16,9 +18,29 @@ function Checklist() {
         </li>
 
         <li>
-          <h2> Asset import from 'ui-library'</h2>
-          <p> If the picture below correctly shos, the import has worked.</p>
+          <h2> Asset import from JS code</h2>
+          <p> Picture below is added via the {'<img>'} tag</p>
           <img src={mountainPhoto} width="300" alt="Mountain Photo" />
+        </li>
+
+        <li>
+          <h2> Asset import from CSS/SCSS code</h2>
+          <p> Picture below is added via "background-image"</p>
+          <div className="ui-library-img" />
+        </li>
+
+        <li>
+          <h2> Lazy-load 3rd party modules</h2>
+          <p> 1. Is the markdown correctly rendered? </p>
+          <p> 2. Are the packages loaded in another chunk (see Network tab) </p>
+          <Button variant='blue' onClick={() => setShowMarkdown(true)}>
+            Show Markdown
+          </Button>
+          {showMarkdown && (
+            <Markdown markdownString={`# Heading rendered from markdown
+  [link rendered from markdown](https://google.com)
+            `} />
+          )}
         </li>
       </ol>
     </section>

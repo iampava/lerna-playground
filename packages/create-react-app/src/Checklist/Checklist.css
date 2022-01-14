@@ -23,3 +23,10 @@
 .Checklist img {
   max-width: 100%;
 }
+
+.Checklist .ui-library-img {
+  width: 400px;
+  height: 200px;
+  background-size: cover;
+  background-image: url('ui-library/assets/mountain.jpg');
+}
