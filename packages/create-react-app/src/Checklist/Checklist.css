@@ -19,3 +19,7 @@
   font-weight: normal;
   text-decoration: underline;
 }
+
+.Checklist img {
+  max-width: 100%;
+}
