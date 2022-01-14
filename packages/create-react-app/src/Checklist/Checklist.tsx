@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Markdown } from 'ui-library';
+import { Button, Markdown, Avatar } from 'ui-library';
 import './Checklist.css';
 
 import mountainPhoto from 'ui-library/assets/mountain.jpg';
@@ -27,6 +27,11 @@ function Checklist() {
           <h2> Asset import from CSS/SCSS code</h2>
           <p> Picture below is added via "background-image"</p>
           <div className="ui-library-img" />
+        </li>
+
+        <li>
+          <h2> Library can import and use it's own assets</h2>
+          <Avatar />
         </li>
 
         <li>
