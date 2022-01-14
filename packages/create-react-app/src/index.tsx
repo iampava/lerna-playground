@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import Checklist from './Checklist/Checklist';
 import reportWebVitals from './reportWebVitals';
+
+import 'ui-library/styles/common.scss';
 
 ReactDOM.render(
   <React.StrictMode>

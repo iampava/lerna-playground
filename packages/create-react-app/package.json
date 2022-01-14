@@ -43,6 +43,7 @@
     ]
   },
   "devDependencies": {
+    "node-sass": "^7.0.1",
     "serve": "^13.0.2"
   }
 }
