@@ -42,6 +42,10 @@ function Checklist() {
             `} />
           )}
         </li>
+        <li>
+          <h2> README.md</h2>
+          <p> Have a look there for the full checklist.</p>
+        </li>
       </ol>
     </section>
   );
