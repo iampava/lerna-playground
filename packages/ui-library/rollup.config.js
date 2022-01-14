@@ -1,5 +1,6 @@
 import dts from 'rollup-plugin-dts';
-import copy from 'rollup-plugin-copy'
+import postcssUrl from 'postcss-url';
+import copy from 'rollup-plugin-copy';
 import image from '@rollup/plugin-image';
 import postcss from 'rollup-plugin-postcss';
 import { terser } from 'rollup-plugin-terser';
@@ -75,7 +76,18 @@ export default [
       postcss({
         extract: false,
         minimize: true,
-        use: ['sass']
+        use: ['sass'],
+        plugins: [
+          postcssUrl({
+            // Enable inline assets using base64 encoding
+            url: "inline", // 
+            // Maximum file size to inline (in kilobytes)
+            maxSize: 100, // 
+            // Fallback method to use if max size is exceeded
+            // FIXME: if the image exceeds `maxSize`, it's not visible in the consuming app. 
+            fallback: "copy", // 
+          }),
+        ],
       }),
 
       // Minify generated es bundle
