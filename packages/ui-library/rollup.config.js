@@ -85,6 +85,7 @@ export default [
             maxSize: 100, // 
             // Fallback method to use if max size is exceeded
             // FIXME: if the image exceeds `maxSize`, it's not visible in the consuming app. 
+            // https://bundlers.tooling.report/non-js-resources/image/url/
             fallback: "copy", // 
           }),
         ],
