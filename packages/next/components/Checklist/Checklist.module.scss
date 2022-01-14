@@ -1,0 +1,36 @@
+@import "~ui-library/styles/variables.scss";
+
+.Checklist {
+    padding: 2em;
+    color: #282c34;
+  }
+  
+  .Checklist h1 {
+    font-size: 2em;
+    margin-bottom: 0;
+  }
+  
+  .Checklist .about {
+    font-weight: 300;
+    font-size: 1.5em;
+    margin-top: 0.5em;
+  }
+  
+  .Checklist > ol h2 {
+    margin-top: 2em;
+    font-weight: normal;
+    text-decoration: underline;
+  }
+  
+  .Checklist img {
+    max-width: 100%;
+  }
+
+  
+.Checklist .ui-library-img {
+  width: 400px;
+  height: 200px;
+  background-size: cover;
+  border: 1em solid color(blue);
+  background-image: url("~ui-library/assets/mountain.jpg");
+}
