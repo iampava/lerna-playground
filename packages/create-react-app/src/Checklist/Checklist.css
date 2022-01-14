@@ -1,0 +1,21 @@
+.Checklist {
+  padding: 2em;
+  color: #282c34;
+}
+
+.Checklist h1 {
+  font-size: 2em;
+  margin-bottom: 0;
+}
+
+.Checklist .about {
+  font-weight: 300;
+  font-size: 1.5em;
+  margin-top: 0.5em;
+}
+
+.Checklist > ol h2 {
+  margin-top: 2em;
+  font-weight: normal;
+  text-decoration: underline;
+}
