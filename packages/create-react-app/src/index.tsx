@@ -4,6 +4,7 @@ import Checklist from './Checklist/Checklist';
 import reportWebVitals from './reportWebVitals';
 
 import 'ui-library/styles/common.scss';
+import 'ui-library/styles/index.css';
 
 ReactDOM.render(
   <React.StrictMode>
