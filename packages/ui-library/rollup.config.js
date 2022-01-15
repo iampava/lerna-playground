@@ -74,7 +74,8 @@ export default [
 
       // Handle CSS
       postcss({
-        extract: false,
+        extract: true,
+        modules: true,
         minimize: true,
         use: ['sass'],
         plugins: [
@@ -123,6 +124,13 @@ export default [
           }
         ]
       }),
+      // index.css is generated for both builds.
+      // We want to move it in the dist/styles folder,
+      // so it's easily imported by the apps.
+      copy({
+        targets: [{ src: 'dist/cjs/index.css', dest: 'dist/styles' }],
+        hook: 'writeBundle'
+      })
     ],
   },
 
@@ -144,4 +152,44 @@ function mapPackageJsonToDist(packageJson) {
   packageJson.types = packageJson.types.split('dist/')[1];
 
   return packageJson;
+}
+
+/****************************** */
+
+/**
+ * This returns an array of plugins that find all matching SCSS files,
+ * and export each of them into a CSS file. In theory we could use them
+ * in a SSR environment, importing the styles alongside each component.
+ * 
+ * Unfortunately this doesn't work natively in NextJS, so for the moment
+ * this function is unused, and we went with a compromise scenario (see README).
+ */
+const bundleCss = () => {
+  var config = []
+  var files = glob.sync(path.resolve(__dirname, 'src/components/**/*.module.scss'))
+  files.forEach(file => {
+    var filename = file.split('/').pop();
+
+    config.push(
+      postcss({
+        include: file,
+        modules: true,
+        extract: `styles/${filename.split('.module.scss')[0]}.css`,
+        minimize: true,
+        plugins: [
+          postcssUrl({
+            // Enable inline assets using base64 encoding
+            url: "inline", // 
+            // Maximum file size to inline (in kilobytes)
+            maxSize: 100, // 
+            // Fallback method to use if max size is exceeded
+            // FIXME: if the image exceeds `maxSize`, it's not visible in the consuming app. 
+            // https://bundlers.tooling.report/non-js-resources/image/url/
+            fallback: "copy", // 
+          }),
+        ],
+      })
+    )
+  })
+  return config
 }
