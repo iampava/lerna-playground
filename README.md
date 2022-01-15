@@ -51,7 +51,20 @@ module.exports = nextConfig
 
 ```
 
-## Questions:
+## Questions / Problems:
 
-* do we need named exports in `ui-library` or can we also do `default` ones? Do all the checklist items still pass?
-* what if the common library has some big images we don't want inlined as Base64?
+
+1. How to handle styling for both SPA and SSR apps?
+
+We want this library to handle both SPA apps (eg: [create-react-app](https://create-react-app.dev/)) and SSR apps (eg: [NextJS](https://nextjs.org/)).  Not sure what is the best approach... I'll have to do some more research on libraries that manage to achieve this, like [material-ui](https://github.com/mui-org/material-ui).
+
+In the meantime, the compromise solution is to extract the CSS into one `index.css` file, which we'll have to **manually import** into all consuming apps. This works but with one **major downside**, we bundle all the CSS even if we use just parts of it.
+
+
+2. Will default exports from `ui-library` work as well?
+
+All components in `ui-library` use named exports. I assume default exports would work as well, but we'll have to test this, making sure all checklists pass.
+
+3. How to handle big images in the component library?
+
+Right now images get converted to `base64` which heavily increases the JS payload. What is the best way to handle big images in the `ui-library`? Or do we simply make sure our components are built in a generic way, and the image will be provided by the consuming apps?
